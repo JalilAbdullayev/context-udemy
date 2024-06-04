@@ -1,6 +1,6 @@
-import Navbar from "./Components/Navbar";
-import ToDoList from "./Components/ToDoList";
-import ThemeContextProvider from "./Contexts/ThemeContext";
+import Navbar from "./components/Navbar";
+import ToDoList from "./components/ToDoList";
+import ThemeContextProvider from "./contexts/ThemeContext";
 
 function App() {
     return (

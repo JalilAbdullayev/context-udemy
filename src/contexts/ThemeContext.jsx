@@ -7,7 +7,7 @@ export default class ThemeContextProvider extends Component {
         isDarkTheme: true,
         lightTheme: {
             text: '#222',
-            background: 'D8DDF1'
+            background: '#D8DDF1'
         },
         darkTheme: {
             text: '#FFF',
