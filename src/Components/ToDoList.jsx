@@ -1,0 +1,19 @@
+import React from "react";
+
+export default class ToDoList extends React.Component {
+    render() {
+        return (
+            <div className='ui list'>
+                <p className='item'>
+                    Plan the family trip
+                </p>
+                <p className='item'>
+                    Go for shopping for dinner
+                </p>
+                <p className='item'>
+                    Go for a walk
+                </p>
+            </div>
+        )
+    }
+}
