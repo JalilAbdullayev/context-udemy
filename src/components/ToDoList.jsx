@@ -7,7 +7,7 @@ export default class ToDoList extends React.Component {
             //*Consumer function component-də də işləyir.
             <ThemeContext.Consumer>
                 {(context) => {
-                    const {isDarkTheme, darkTheme, lightTheme} = context;
+                    const {isDarkTheme, darkTheme, lightTheme, changeTheme} = context;
                     const theme = isDarkTheme ? darkTheme : lightTheme;
                     return (
                         <div style={{background: theme.background, color: theme.text, height: 120 + 'px'}}>
@@ -15,11 +15,14 @@ export default class ToDoList extends React.Component {
                                 Plan the family trip
                             </p>
                             <p className='item'>
-                                Go for shopping for dinner
+                                Go shopping for dinner
                             </p>
                             <p className='item'>
                                 Go for a walk
                             </p>
+                            <button className='ui button primary' onClick={changeTheme}>
+                                Change The Theme
+                            </button>
                         </div>
                     )
                 }}
