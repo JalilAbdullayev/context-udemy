@@ -17,8 +17,19 @@ const ToDoListContextProvider = ({children}) => {
             text: 'Go for a walk'
         }
     ]);
+
+    const addToDo = text => {
+        setTodos([
+            ...todos,
+            {
+                id: Math.random() * 1000,
+                text
+            }
+        ]);
+    }
+
     return (
-        <TodoListContext.Provider value={{todos}}>
+        <TodoListContext.Provider value={{todos, addToDo}}>
             {children}
         </TodoListContext.Provider>
     )
