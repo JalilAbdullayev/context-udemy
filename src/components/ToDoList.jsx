@@ -4,19 +4,20 @@ import { TodoListContext } from "../contexts/TodoListContext";
 
 const ToDoList = () => {
     const {isDarkTheme, darkTheme, lightTheme, changeTheme} = useContext(ThemeContext);
-    const {todos, addToDo, removeToDo} = useContext(TodoListContext);
+    const {todos, dispatch} = useContext(TodoListContext);
     const theme = isDarkTheme ? darkTheme : lightTheme;
     const [todo, setTodo] = useState('');
 
     const handleFormSubmit = e => {
         e.preventDefault();
-        addToDo(todo);
+        dispatch({type: 'add', text: todo});
     }
 
     return (
         <div style={{background: theme.background, color: theme.text}}>
             {todos.length ? (todos.map(todo => {
-                return <p id={todo.id} onClick={() => removeToDo(todo.id)} className='item' key={todo.id}>
+                return <p id={todo.id} onClick={() => dispatch({type: 'remove', id: todo.id})} className='item'
+                          key={todo.id}>
                     {todo.text}
                 </p>
             })) : <p>No todos</p>}
