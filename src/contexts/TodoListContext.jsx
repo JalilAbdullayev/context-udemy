@@ -28,8 +28,14 @@ const ToDoListContextProvider = ({children}) => {
         ]);
     }
 
+    const removeToDo = id => {
+        setTodos(todos.filter(todo => {
+            return todo.id !== id
+        }))
+    }
+
     return (
-        <TodoListContext.Provider value={{todos, addToDo}}>
+        <TodoListContext.Provider value={{todos, addToDo, removeToDo}}>
             {children}
         </TodoListContext.Provider>
     )

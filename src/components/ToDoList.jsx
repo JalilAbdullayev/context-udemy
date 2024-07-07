@@ -4,13 +4,9 @@ import { TodoListContext } from "../contexts/TodoListContext";
 
 const ToDoList = () => {
     const {isDarkTheme, darkTheme, lightTheme, changeTheme} = useContext(ThemeContext);
-    const {todos, addToDo} = useContext(TodoListContext);
+    const {todos, addToDo, removeToDo} = useContext(TodoListContext);
     const theme = isDarkTheme ? darkTheme : lightTheme;
     const [todo, setTodo] = useState('');
-
-    const handleChange = e => {
-        setTodo(e.target.value);
-    }
 
     const handleFormSubmit = e => {
         e.preventDefault();
@@ -20,7 +16,7 @@ const ToDoList = () => {
     return (
         <div style={{background: theme.background, color: theme.text}}>
             {todos.length ? (todos.map(todo => {
-                return <p className='item' key={todo.id}>
+                return <p id={todo.id} onClick={() => removeToDo(todo.id)} className='item' key={todo.id}>
                     {todo.text}
                 </p>
             })) : <p>No todos</p>}
@@ -28,7 +24,7 @@ const ToDoList = () => {
                 <label htmlFor="todo">
                     Add todo:
                 </label>
-                <input type="text" id='todo' onChange={handleChange}/>
+                <input type="text" id='todo' onChange={e => setTodo(e.target.value)}/>
                 <input type="submit" className="ui button primary" style={{marginRight: 4 + 'px'}} value='Add new'/>
             </form>
             <button className='ui button primary' onClick={changeTheme}>
